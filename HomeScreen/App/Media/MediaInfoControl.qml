@@ -56,13 +56,13 @@ Item {
         id: appDelegate
         Item {
             property variant myData: model
-            width: 400; height: 400
+            width: 400 * appConfig.width_ratio; height: 400 * appConfig.height_ratio
             scale: PathView.iconScale
             Image {
                 id: myIcon
                 width: parent.width
                 height: parent.height
-                y: 20
+
                 anchors.horizontalCenter: parent.horizontalCenter
                 source: album_art
             }

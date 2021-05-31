@@ -16,6 +16,7 @@ SOURCES += \
         App/Climate/climatemodel.cpp \
         App/Media/player.cpp \
         App/Media/playlistmodel.cpp \
+        appconfiginfo.cpp \
         applicationsmodel.cpp \
         main.cpp \
         xmlreader.cpp
@@ -37,6 +38,7 @@ HEADERS += \
     App/Climate/climatemodel.h \
     App/Media/player.h \
     App/Media/playlistmodel.h \
+    appconfiginfo.h \
     applicationsmodel.h \
     xmlreader.h
 

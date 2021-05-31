@@ -25,8 +25,8 @@ Drawer {
             implicitHeight: playlistItem.height
             Image {
                 id: playlistItem
-                width: 675
-                height: 193
+                width: 675 * appConfig.width_ratio
+                height: 193 * appConfig.height_ratio
                 source: "qrc:/App/Media/Image/playlist.png"
                 opacity: 0.5
             }

@@ -5,8 +5,8 @@ import QtPositioning 5.6
 
 Item {
     id: root
-    width: 1920
-    height: 1200-70
+    width: 1920 * appConfig.width_ratio
+    height: 1200-140 * appConfig.height_ratio
 
     Item {
         id: startAnimation

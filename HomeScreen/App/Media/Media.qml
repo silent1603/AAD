@@ -2,8 +2,8 @@ import QtQuick 2.6
 import QtQuick.Controls 2.4
 
 Item {
-    width: 1920
-    height: 1200-104
+    width: 1920 * appConfig.width_ratio
+    height: (1200-104)* appConfig.height_ratio
     //Header
     AppHeader{
         id: headerItem
@@ -22,8 +22,8 @@ Item {
     //Playlist
     PlaylistView{
         id: playlist
-        y: 141 + 104
-        width: 675
+        y: (141 + 104)
+        width: 675 * appConfig.width_ratio
         height: parent.height-headerItem.height
     }
 

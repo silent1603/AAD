@@ -182,5 +182,6 @@
         <file>App/Media/MediaInfoControl.qml</file>
         <file>App/Media/PlaylistView.qml</file>
         <file>App/Media/SwitchButton.qml</file>
+        <file>App/Climate/Climate.qml</file>
     </qresource>
 </RCC>

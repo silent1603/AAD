@@ -11,102 +11,103 @@ Item {
         parent.push(url)
     }
 
-//    ListView {
-//        id: lvWidget
-//        spacing: 10
-//        orientation: ListView.Horizontal
-//        width: 1920
-//        height: 570
-//        interactive: false
+    ListView {
+        id: lvWidget
+        spacing: 10
+        orientation: ListView.Horizontal
+        width: 1920
+        height: 570
+        interactive: false
 
-//        displaced: Transition {
-//            NumberAnimation { properties: "x,y"; easing.type: Easing.OutQuad }
-//        }
+        displaced: Transition {
+            NumberAnimation { properties: "x,y"; easing.type: Easing.OutQuad }
+        }
 
-//        model: DelegateModel {
-//            id: visualModelWidget
-//            model: ListModel {
-//                id: widgetModel
-//                ListElement { type: "map" }
-//                ListElement { type: "climate" }
-//                ListElement { type: "media" }
-//            }
+        model: DelegateModel {
+            id: visualModelWidget
+            model: ListModel {
+                id: widgetModel
+                ListElement { type: "map" }
+                ListElement { type: "climate" }
+                ListElement { type: "media" }
+            }
 
-//            delegate: DropArea {
-//                id: delegateRootWidget
-//                width: 635; height: 570
-//                keys: ["widget"]
+            delegate: DropArea {
+                id: delegateRootWidget
+                width: 635; height: 570
+                keys: ["widget"]
 
-//                onEntered: {
-//                    visualModelWidget.items.move(drag.source.visualIndex, iconWidget.visualIndex)
-//                    iconWidget.item.enabled = false
-//                }
-//                property int visualIndex: DelegateModel.itemsIndex
-//                Binding { target: iconWidget; property: "visualIndex"; value: visualIndex }
-//                onExited: iconWidget.item.enabled = true
-//                onDropped: {
-//                    console.log(drop.source.visualIndex)
-//                }
+                onEntered: {
+                    visualModelWidget.items.move(drag.source.visualIndex, iconWidget.visualIndex)
+                    iconWidget.item.enabled = false
+                }
+                property int visualIndex: DelegateModel.itemsIndex
+                Binding { target: iconWidget; property: "visualIndex"; value: visualIndex }
+                onExited: iconWidget.item.enabled = true
+                onDropped: {
+                    console.log(drop.source.visualIndex)
+                }
 
-//                Loader {
-//                    id: iconWidget
-//                    property int visualIndex: 0
-//                    width: 635; height: 570
-//                    anchors {
-//                        horizontalCenter: parent.horizontalCenter;
-//                        verticalCenter: parent.verticalCenter
-//                    }
+                Loader {
+                    id: iconWidget
+                    property int visualIndex: 0
+                    width: 635; height: 570
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter;
+                        verticalCenter: parent.verticalCenter
+                    }
 
-//                    sourceComponent: {
-//                        switch(model.type) {
-//                        case "map": return mapWidget
-//                        case "climate": return climateWidget
-//                        case "media": return mediaWidget
-//                        }
-//                    }
+                    sourceComponent: {
+                        switch(model.type) {
+                        case "map": return mapWidget
+                        case "climate": return climateWidget
+                        case "media": return mediaWidget
+                        }
+                    }
 
-//                    Drag.active: iconWidget.item.drag.active
-//                    Drag.keys: "widget"
-//                    Drag.hotSpot.x: delegateRootWidget.width/2
-//                    Drag.hotSpot.y: delegateRootWidget.height/2
+                    Drag.active: iconWidget.item.drag.active
+                    Drag.keys: "widget"
+                    Drag.hotSpot.x: delegateRootWidget.width/2
+                    Drag.hotSpot.y: delegateRootWidget.height/2
 
-//                    states: [
-//                        State {
-//                            when: iconWidget.Drag.active
-//                            ParentChange {
-//                                target: iconWidget
-//                                parent: root
-//                            }
+                    states: [
+                        State {
+                            when: iconWidget.Drag.active
+                            ParentChange {
+                                target: iconWidget
+                                parent: root
+                            }
 
-//                            AnchorChanges {
-//                                target: iconWidget
-//                                anchors.horizontalCenter: undefined
-//                                anchors.verticalCenter: undefined
-//                            }
-//                        }
-//                    ]
-//                }
-//            }
-//        }
+                            AnchorChanges {
+                                target: iconWidget
+                                anchors.horizontalCenter: undefined
+                                anchors.verticalCenter: undefined
+                            }
+                        }
+                    ]
+                }
+            }
+        }
 
-//        Component {
-//            id: mapWidget
-//            MapWidget{
-//                onClicked: openApplication("qrc:/App/Map/Map.qml")
-//            }
-//        }
-//        Component {
-//            id: climateWidget
-//            ClimateWidget {
-//            }
-//        }
-//        Component {
-//            id: mediaWidget
-//            MediaWidget{
-//                onClicked: openApplication("qrc:/App/Media/Media.qml")
-//            }
-//        }
-//    }
+        Component {
+            id: mapWidget
+            MapWidget{
+                onClicked: openApplication("qrc:/App/Map/Map.qml")
+            }
+        }
+        Component {
+            id: climateWidget
+            ClimateWidget {
+                onClicked: openApplication("qrc:/App/Climate/Climate.qml")
+            }
+        }
+        Component {
+            id: mediaWidget
+            MediaWidget{
+                onClicked: openApplication("qrc:/App/Media/Media.qml")
+            }
+        }
+    }
 
     ListView {
         x: 0
