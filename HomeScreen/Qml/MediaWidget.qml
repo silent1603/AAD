@@ -3,8 +3,9 @@ import QtGraphicalEffects 1.0
 
 MouseArea {
     id: root
-    implicitWidth: 635
-    implicitHeight: 570
+    implicitWidth: 635 * appConfig.width_ratio
+    implicitHeight: 570 * appConfig.height_ratio
+    drag.target: parent
     Rectangle {
         anchors{
             fill: parent
@@ -15,10 +16,10 @@ MouseArea {
     }
     Image {
         id: bgBlur
-        x:10
-        y:10
-        width: 615
-        height: 550
+        x:10 * appConfig.width_ratio
+        y:10 * appConfig.height_ratio
+        width: 615 * appConfig.width_ratio
+        height: 550 * appConfig.height_ratio
         source: {
             if (myModel.rowCount() > 0 && myModel.rowCount() >  player.playlist.currentIndex)
                 return myModel.data(myModel.index(player.playlist.currentIndex,0), 260)
@@ -40,17 +41,17 @@ MouseArea {
     Text {
         id: title
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 40
+        y: 40 * appConfig.height_ratio
         text: "USB Music"
         color: "white"
         font.pixelSize: 34
     }
     Image {
         id: bgInner
-        x:201
-        y:119
-        width: 258
-        height: 258
+        x:201 * appConfig.width_ratio
+        y:119 * appConfig.height_ratio
+        width: 258 * appConfig.width_ratio
+        height: 258 * appConfig.height_ratio
         source: {
             if (myModel.rowCount() > 0 && myModel.rowCount() >  player.playlist.currentIndex)
                 return myModel.data(myModel.index(player.playlist.currentIndex,0), 260)
@@ -59,49 +60,49 @@ MouseArea {
         }
     }
     Image{
-        x:201
-        y:119
-        width: 258
-        height: 258
+        x:201 * appConfig.width_ratio
+        y:119 * appConfig.height_ratio
+        width: 258 * appConfig.width_ratio
+        height: 258 * appConfig.height_ratio
         source: "qrc:/Img/HomeScreen/widget_media_album_bg.png"
     }
     Text {
         id: txtSinger
-        x: 42
-        y: (56+343)
-        width: 551
+        x: 42 * appConfig.width_ratio
+        y: (56+343) * appConfig.height_ratio
+        width: 551 * appConfig.width_ratio
         horizontalAlignment: Text.AlignHCenter
         text: {
             if (myModel.rowCount() > 0 && myModel.rowCount() >  player.playlist.currentIndex)
                 return myModel.data(myModel.index(player.playlist.currentIndex,0), 258)
         }
         color: "white"
-        font.pixelSize: 30
+        font.pixelSize: 30 * appConfig.height_ratio
     }
     Text {
         id: txtTitle
-        x: 42
-        y: (56+343+55)
-        width: 551
+        x: 42 * appConfig.height_ratio
+        y: (56+343+55) * appConfig.height_ratio
+        width: 551 * appConfig.width_ratio
         horizontalAlignment: Text.AlignHCenter
         text: {
-            if (myModel.rowCount() > 0 && myModel.rowCount() >  player.playlist.currentIndex)
+            if (myModel.rowCount()() > 0 && myModel.rowCount() >  player.playlist.currentIndex)
                 return myModel.data(myModel.index(player.playlist.currentIndex,0), 257)
         }
         color: "white"
-        font.pixelSize: 48
+        font.pixelSize: 48 * appConfig.height_ratio
     }
     Image{
         id: imgDuration
-        x: 62
-        y: (56+343+55+62)
-        width: 511
+        x: 62 * appConfig.width_ratio
+        y: (56+343+55+62) * appConfig.height_ratio
+        width: 511 * appConfig.width_ratio
         source: "qrc:/Img/HomeScreen/widget_media_pg_n.png"
     }
     Image{
         id: imgPosition
-        x: 62
-        y: (56+343+55+62)
+        x: 62 * appConfig.width_ratio
+        y: (56+343+55+62) * appConfig.height_ratio
         width: 0
         source: "qrc:/Img/HomeScreen/widget_media_pg_s.png"
     }

@@ -36,7 +36,7 @@ Drawer {
                 anchors.leftMargin: 70
                 verticalAlignment: Text.AlignVCenter
                 color: "white"
-                font.pixelSize: 32
+                font.pixelSize: 32 * appConfig.height_ratio
             }
             onClicked: {
                 player.playlist.currentIndex = index

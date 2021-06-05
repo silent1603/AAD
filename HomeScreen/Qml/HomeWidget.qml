@@ -5,18 +5,20 @@ import QtQml.Models 2.1
 
 Item {
     id: root
-    width: 1920
-    height: 1096
+    width: 1920 * appConfig.width_ratio
+    height: 1096 * appConfig.height_ratio
     function openApplication(url){
         parent.push(url)
     }
 
     ListView {
         id: lvWidget
-        spacing: 10
+        spacing: 5 * appConfig.width_ratio
+        leftMargin: 10 * appConfig.width_ratio
+        rightMargin:  3 * appConfig.width_ratio
         orientation: ListView.Horizontal
-        width: 1920
-        height: 570
+        width: parent.width -spacing
+        height: 570 * appConfig.height_ratio
         interactive: false
 
         displaced: Transition {
@@ -34,7 +36,8 @@ Item {
 
             delegate: DropArea {
                 id: delegateRootWidget
-                width: 635; height: 570
+                width: 635 * appConfig.width_ratio
+                height: 570 * appConfig.height_ratio
                 keys: ["widget"]
 
                 onEntered: {
@@ -51,7 +54,8 @@ Item {
                 Loader {
                     id: iconWidget
                     property int visualIndex: 0
-                    width: 635; height: 570
+                    width: 635 * appConfig.width_ratio
+                    height: 570 * appConfig.height_ratio
                     anchors {
                         horizontalCenter: parent.horizontalCenter;
                         verticalCenter: parent.verticalCenter
@@ -110,9 +114,10 @@ Item {
     }
 
     ListView {
-        x: 0
-        y:570
-        width: 1920; height: 604
+        x: 0 * appConfig.width_ratio
+        y:570 * appConfig.height_ratio
+        width: 1920 * appConfig.width_ratio
+        height: 604 * appConfig.height_ratio
         orientation: ListView.Horizontal
         interactive: false
         spacing: 5
@@ -126,7 +131,8 @@ Item {
             model: appsModel
             delegate: DropArea {
                 id: delegateRoot
-                width: 316; height: 604
+                width: 316 * appConfig.width_ratio
+                height: 604 * appConfig.height_ratio
                 keys: "AppButton"
 
                 onEntered: visualModel.items.move(drag.source.visualIndex, icon.visualIndex)
@@ -136,7 +142,8 @@ Item {
                 Item {
                     id: icon
                     property int visualIndex: 0
-                    width: 316; height: 604
+                    width: 316 *appConfig.width_ratio
+                    height: 604 * appConfig.height_ratio
                     anchors {
                         horizontalCenter: parent.horizontalCenter;
                         verticalCenter: parent.verticalCenter

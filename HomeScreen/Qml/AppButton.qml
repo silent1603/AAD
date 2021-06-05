@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 MouseArea {
     id: root
-    implicitWidth: 316
-    implicitHeight: 604
+    implicitWidth: 316 * appConfig.width_ratio
+    implicitHeight: 604 * appConfig.height_ratio
     property string icon
     property string title
     Image {
@@ -15,9 +15,9 @@ MouseArea {
     Text {
         id: appTitle
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 350
+        y: 350 * appConfig.height_ratio
         text: title
-        font.pixelSize: 36
+        font.pixelSize: 36 * appConfig.height_ratio
         color: "white"
     }
 

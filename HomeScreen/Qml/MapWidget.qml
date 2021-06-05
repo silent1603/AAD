@@ -5,22 +5,23 @@ MouseArea {
     id: root
     preventStealing: true
     propagateComposedEvents: true
-    implicitWidth: 635
-    implicitHeight: 570
+    implicitWidth: 635 * appConfig.width_ratio
+    implicitHeight: 570 * appConfig.height_ratio
+    drag.target: parent
     Rectangle {
         anchors{
             fill: parent
-            margins: 10
+
         }
-        opacity: 0.7
+        opacity: 0.1
         color: "#111419"
     }
     Item {
         id: map
-        x: 10
-        y: 10
-        width: 615
-        height: 550
+        x: 10 * appConfig.width_ratio
+        y: 10 * appConfig.height_ratio
+        width: 615 * appConfig.width_ratio
+        height: 550 * appConfig.height_ratio
         Plugin {
             id: mapPlugin
             name: "mapboxgl" //"osm" // , "esri", ...
@@ -51,8 +52,10 @@ MouseArea {
     }
     Image {
         id: idBackgroud
+
         width: root.width
         height: root.height
+
         source: ""
     }
 

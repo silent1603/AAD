@@ -4,15 +4,15 @@ import "Common"
 import QtQml 2.2
 
 Item {
-    width: 1920
-    height: 104
+    width: 1920 * appConfig.width_ratio
+    height: 104 * appConfig.height_ratio
     signal bntBackClicked
     property bool isShowBackBtn: false
     Button {
         anchors.left: parent.left
         icon: "qrc:/Img/StatusBar/btn_top_back"
-        width: 135
-        height: 101
+        width: 135 * appConfig.width_ratio
+        height: 101 * appConfig.height_ratio
         iconWidth: width
         iconHeight: height
         onClicked: bntBackClicked()
@@ -21,46 +21,46 @@ Item {
 
     Item {
         id: clockArea
-        x: 660
-        width: 300
+        x: 660 * appConfig.width_ratio
+        width: 300 * appConfig.width_ratio
         height: parent.height
         Image {
             anchors.left: parent.left
-            height: 104
+            height: 104 * appConfig.height_ratio
             source: "qrc:/Img/StatusBar/status_divider.png"
         }
         Text {
             id: clockTime
             text: "10:28"
             color: "white"
-            font.pixelSize: 72
+            font.pixelSize: 72 * appConfig.height_ratio
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.centerIn: parent
         }
         Image {
             anchors.right: parent.right
-            height: 104
+            height: 104 * appConfig.height_ratio
             source: "qrc:/Img/StatusBar/status_divider.png"
         }
     }
     Item {
         id: dayArea
         anchors.left: clockArea.right
-        width: 300
+        width: 300 * appConfig.width_ratio
         height: parent.height
         Text {
             id: day
             text: "Jun. 24"
             color: "white"
-            font.pixelSize: 72
+            font.pixelSize: 72 * appConfig.height_ratio
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.centerIn: parent
         }
         Image {
             anchors.right: parent.right
-            height: 104
+            height: 104 * appConfig.height_ratio
             source: "qrc:/Img/StatusBar/status_divider.png"
         }
     }

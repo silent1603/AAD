@@ -23,7 +23,7 @@ Item {
         anchors.left: audioTitle.left
         text: album_art_view.currentItem.myData.singer
         color: "white"
-        font.pixelSize: 32
+        font.pixelSize: 32 * appConfig.height_ratio
     }
 
     NumberAnimation {
@@ -42,7 +42,7 @@ Item {
         anchors.rightMargin: 20
         text: album_art_view.count
         color: "white"
-        font.pixelSize: 36
+        font.pixelSize: 36 * appConfig.height_ratio
     }
     Image {
         anchors.top: parent.top
@@ -56,7 +56,8 @@ Item {
         id: appDelegate
         Item {
             property variant myData: model
-            width: 400 * appConfig.width_ratio; height: 400 * appConfig.height_ratio
+            width: 400 * appConfig.width_ratio
+            height: 400 * appConfig.height_ratio
             scale: PathView.iconScale
             Image {
                 id: myIcon
@@ -115,7 +116,7 @@ Item {
     }
     Slider{
         id: progressBar
-        width: 1491 - 675*playlist.position
+        width: (1491 - 675*playlist.position) * appConfig.width_ratio
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 245
         anchors.horizontalCenter: parent.horizontalCenter

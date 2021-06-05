@@ -24,14 +24,14 @@ Item {
             verticalAlignment: Text.AlignVCenter
             text: qsTr("Playlist")
             color: "white"
-            font.pixelSize: 32
+            font.pixelSize: 32 * appConfig.height_ratio
         }
         Text {
             id: headerTitleText
             text: qsTr("Media Player")
             anchors.centerIn: parent
             color: "white"
-            font.pixelSize: 46
+            font.pixelSize: 46 * appConfig.height_ratio
         }
     }
 }

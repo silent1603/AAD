@@ -1,5 +1,5 @@
 #include "xmlreader.h"
-
+#include <QDebug>
 XmlReader::XmlReader(QString filePath, ApplicationsModel &model)
 {
     ReadXmlFile(filePath);
@@ -9,9 +9,10 @@ XmlReader::XmlReader(QString filePath, ApplicationsModel &model)
 bool XmlReader::ReadXmlFile(QString filePath)
 {
     // Load xml file as raw data
-    QFile f(filePath);
+    QFile f(PROJECT_PATH +filePath);
     if (!f.open(QIODevice::ReadOnly ))
     {
+        qDebug() << "load file error " << '\n';
         // Error while loading file
         return false;
     }

@@ -12,7 +12,7 @@ Item {
         id: startAnimation
         XAnimator{
             target: root
-            from: 1920
+            from: 1920 * appConfig.width_ratio
             to: 0
             duration: 200
             running: true
