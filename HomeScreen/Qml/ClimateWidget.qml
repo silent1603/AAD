@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 MouseArea {
     id: root
+    property bool isFocusing : false
     implicitWidth: 635 * appConfig.width_ratio
     implicitHeight: 570 * appConfig.height_ratio
     drag.target: parent
@@ -140,7 +141,7 @@ MouseArea {
         x: 172 * appConfig.width_ratio
         y: 248 * appConfig.height_ratio
         width: 290 * appConfig.width_ratio
-        height: 100
+        height: 100 * appConfig.height_ratio
         source: "qrc:/Img/HomeScreen/widget_climate_wind_level_01.png"
     }
     Connections{
@@ -246,13 +247,20 @@ MouseArea {
     ]
     onPressed: root.state = "Pressed"
     onReleased:{
-        root.focus = true
-        root.state = "Focus"
-    }
-    onFocusChanged: {
-        if (root.focus == true )
+        if(root.isFocusing)
             root.state = "Focus"
         else
             root.state = "Normal"
     }
+    onFocusChanged: {
+
+        if(root.isFocusing) root.state = "Focus"
+        else root.state = "Normal"
+    }
+    function updateFocus()
+    {
+        if(root.isFocusing) root.state = "Focus"
+        else root.state = "Normal"
+    }
+
 }

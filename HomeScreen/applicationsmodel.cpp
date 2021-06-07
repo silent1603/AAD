@@ -1,5 +1,5 @@
 #include "applicationsmodel.h"
-
+#include "xmlwriter.h"
 ApplicationItem::ApplicationItem(QString title, QString url, QString iconPath)
 {
     m_title = title;
@@ -33,6 +33,12 @@ int ApplicationsModel::rowCount(const QModelIndex &parent) const
     return m_data.count();
 }
 
+
+void ApplicationsModel::saveApps()
+{
+    XmlWriter xmlWriter("applications.xml", *this);
+}
+
 QVariant ApplicationsModel::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || index.row() >= m_data.count())
@@ -53,6 +59,16 @@ void ApplicationsModel::addApplication(ApplicationItem &item)
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_data << item;
     endInsertRows();
+}
+void ApplicationsModel::move(int from , int to)
+{
+    if (from >= 0 && to >= 0 && m_data.size() > from && m_data.size() > to){
+        m_data.move(from, to);
+    }
+}
+ApplicationItem ApplicationsModel::getApplication(int pos)
+{
+    return m_data.at(pos);
 }
 
 QHash<int, QByteArray> ApplicationsModel::roleNames() const

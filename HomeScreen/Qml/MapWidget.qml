@@ -5,6 +5,7 @@ MouseArea {
     id: root
     preventStealing: true
     propagateComposedEvents: true
+    property bool isFocusing : false
     implicitWidth: 635 * appConfig.width_ratio
     implicitHeight: 570 * appConfig.height_ratio
     drag.target: parent
@@ -84,13 +85,16 @@ MouseArea {
     ]
     onPressed: root.state = "Pressed"
     onReleased:{
-        root.focus = true
-        root.state = "Focus"
+        if (!root.isFocusing) root.state = "Normal"
+        else root.state = "Focus"
     }
     onFocusChanged: {
-        if (root.focus == true )
-            root.state = "Focus"
-        else
-            root.state = "Normal"
+        if (root.isFocusing == true )root.state = "Focus"
+        else root.state = "Normal"
+    }
+    function updateFocus()
+    {
+        if(root.isFocusing) root.state = "Focus"
+        else root.state = "Normal"
     }
 }

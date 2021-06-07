@@ -3,6 +3,7 @@ import QtGraphicalEffects 1.0
 
 MouseArea {
     id: root
+    property bool isFocusing : false
     implicitWidth: 635 * appConfig.width_ratio
     implicitHeight: 570 * appConfig.height_ratio
     drag.target: parent
@@ -132,16 +133,18 @@ MouseArea {
     ]
     onPressed: root.state = "Pressed"
     onReleased:{
-        root.focus = true
-        root.state = "Focus"
+        if (root.isFocusing == true )root.state = "Focus"
+        else root.state = "Normal"
     }
     onFocusChanged: {
-        if (root.focus == true )
-            root.state = "Focus"
-        else
-            root.state = "Normal"
+        if (root.isFocusing == true )root.state = "Focus"
+        else root.state = "Normal"
     }
-
+    function updateFocus()
+    {
+        if(root.isFocusing) root.state = "Focus"
+        else root.state = "Normal"
+    }
     Connections{
         target: player.playlist
         onCurrentIndexChanged:{
