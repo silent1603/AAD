@@ -5,7 +5,7 @@ MouseArea {
     property bool isFocusing : false
     implicitWidth: 635 * appConfig.width_ratio
     implicitHeight: 570 * appConfig.height_ratio
-    drag.target: parent
+    //drag.target: parent
     Rectangle {
         anchors{
             fill: parent

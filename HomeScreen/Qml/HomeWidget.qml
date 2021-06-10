@@ -218,7 +218,8 @@ Item {
 
                     Drag.active: app.drag.active
                     Drag.keys: "AppButton"
-
+                    Drag.hotSpot.x:app.width /2
+                    Drag.hotSpot.y: app.height/2
                     states: [
                         State {
                             when: icon.Drag.active
@@ -237,5 +238,6 @@ Item {
                 }
             }
         }
+        ScrollBar.horizontal: scrollBar
     }
 }
