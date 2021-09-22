@@ -78,6 +78,9 @@ public:
 
     void addToPlaylist(const QList<QUrl> &urls);
 
+
+signals:
+
 public slots:
     void open();
     QString getTimeInfo(qint64 currentInfo);
@@ -88,6 +91,7 @@ public:
     QMediaPlayer *m_player = nullptr;
     QMediaPlaylist *m_playlist = nullptr;
     PlaylistModel *m_playlistModel = nullptr;
+
 };
 
 #endif // PLAYER_H

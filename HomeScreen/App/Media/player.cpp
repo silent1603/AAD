@@ -72,6 +72,10 @@ Player::Player(QObject *parent)
     if (!m_playlist->isEmpty()) {
         m_playlist->setCurrentIndex(0);
     }
+    m_playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+
+    ;
 }
 
 void Player::open()
@@ -97,6 +101,8 @@ void Player::addToPlaylist(const QList<QUrl> &urls)
         m_playlistModel->addSong(song);
     }
 }
+
+
 
 QString Player::getTimeInfo(qint64 currentInfo)
 {

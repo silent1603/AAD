@@ -7,6 +7,7 @@ ApplicationWindow {
     visible: true
     width: 1920 * appConfig.width_ratio
     height: 1200 * appConfig.height_ratio
+    flags: Qt.Window | Qt.FramelessWindowHint
     Image {
         id: background
         width: 1920 * appConfig.width_ratio

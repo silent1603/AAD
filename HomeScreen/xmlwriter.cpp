@@ -14,7 +14,7 @@ XmlWriter::XmlWriter(QString fileName, ApplicationsModel &model)
 
     QDomElement root = m_xmlDoc.createElement("APPLICATIONS");
     m_xmlDoc.appendChild(root);
-    qDebug() << model.rowCount() << '\n';
+
     for(int i = 0 ; i < model.rowCount(); i++)
     {
         ApplicationItem app = model.getApplication(i);

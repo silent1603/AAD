@@ -114,7 +114,7 @@ Item {
             MapWidget{
                 id: mapWidgetItem
                 onClicked: {
-                    console.log("press map")
+
                     changeFocus(mapWidgetItem)
                     openApplication("qrc:/App/Map/Map.qml")
                }
@@ -126,7 +126,7 @@ Item {
                 id: climateWidgetItem
                 onClicked: {
                      changeFocus(climateWidgetItem)
-                    openApplication("qrc:/App/Climate/Climate.qml")
+                    openApplication("qrc:/App/Climatehttps://forum.manjaro.org//Climate.qml")
 
                 }
             }
@@ -146,7 +146,7 @@ Item {
     ScrollBar{
         id: scrollBar
         width: lvApps.width
-        height: 23 * appConfig.h_ratio
+        height: 20 * appConfig.height_ratio
         anchors.top: lvApps.top
         anchors.left: lvApps.left
         visible: visualModel.count > 6
@@ -168,6 +168,7 @@ Item {
             NumberAnimation { properties: "x,y"; easing.type: Easing.OutQuad }
         }
 
+
         model: DelegateModel {
             id: visualModel
             model: appsModel
@@ -180,8 +181,10 @@ Item {
                 onEntered:{
                     appsModel.move(drag.source.visualIndex, icon.visualIndex)
                     visualModel.items.move(drag.source.visualIndex, icon.visualIndex)
+
                     appsModel.saveApps()
                 }
+
                 property int visualIndex: DelegateModel.itemsIndex
                 Binding { target: icon; property: "visualIndex"; value: visualIndex }
 
@@ -201,7 +204,10 @@ Item {
                         title: model.title
                         icon: model.iconPath
                         drag.target: icon
-                        onClicked: openApplication(model.url)
+                        onClicked:  {
+
+                            openApplication(appsModel.getApplicationUrl(icon.visualIndex))
+                        }
                         onReleased: {
                             app.focus = true
                             app.state = "Focus"
@@ -238,6 +244,9 @@ Item {
                 }
             }
         }
+
+
+
         ScrollBar.horizontal: scrollBar
     }
 }

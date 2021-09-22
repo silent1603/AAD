@@ -1,5 +1,6 @@
 #include "applicationsmodel.h"
 #include "xmlwriter.h"
+#include <QDebug>
 ApplicationItem::ApplicationItem(QString title, QString url, QString iconPath)
 {
     m_title = title;
@@ -65,10 +66,20 @@ void ApplicationsModel::move(int from , int to)
     if (from >= 0 && to >= 0 && m_data.size() > from && m_data.size() > to){
         m_data.move(from, to);
     }
+//    qDebug() << "-------------------------------------------";
+//    for(int i = 0 ; i < m_data.count();i++)
+//    {
+//        qDebug() << m_data.at(i).iconPath() << m_data.at(i).title() << m_data.at(i).url() << '\n';
+//    }
 }
 ApplicationItem ApplicationsModel::getApplication(int pos)
 {
     return m_data.at(pos);
+}
+
+QString ApplicationsModel::getApplicationUrl(int pos)
+{
+    return m_data.at(pos).url();
 }
 
 QHash<int, QByteArray> ApplicationsModel::roleNames() const

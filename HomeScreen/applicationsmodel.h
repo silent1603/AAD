@@ -34,7 +34,8 @@ public:
     void addApplication(ApplicationItem &item);
     ApplicationItem getApplication(int pos);
 public slots:
-     void saveApps();
+    QString getApplicationUrl(int pos);
+    void saveApps();
      void move(int from , int to);
 protected:
     QHash<int, QByteArray> roleNames() const override;

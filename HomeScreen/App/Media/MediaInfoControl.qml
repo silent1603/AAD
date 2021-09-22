@@ -3,6 +3,8 @@ import QtQuick.Controls 2.4
 import QtQuick.Layouts 1.1
 import QtMultimedia 5.9
 Item {
+    property bool  isRepeated: false
+    property bool isShuffle: false
     Text {
         id: audioTitle
         anchors.top: parent.top
@@ -174,14 +176,10 @@ Item {
         anchors.left: currentTime.left
         icon_off: "qrc:/App/Media/Image/shuffle.png"
         icon_on: "qrc:/App/Media/Image/shuffle-1.png"
-        status: player.playlist.playbackMode === Playlist.Random ? 1 : 0
+        status: isShuffle
         onClicked: {
-            console.log(player.playlist.playbackMode)
-            if (player.playlist.playbackMode === Playlist.Random) {
-                player.playlist.playbackMode = Playlist.Sequential
-            } else {
-                player.playlist.playbackMode = Playlist.Random
-            }
+            isShuffle = !isShuffle
+
         }
     }
     ButtonControl {
@@ -193,7 +191,16 @@ Item {
         icon_pressed: "qrc:/App/Media/Image/hold-prev.png"
         icon_released: "qrc:/App/Media/Image/prev.png"
         onClicked: {
+            if(isShuffle)
+            {
+                   player.playlist.playbackMode = Playlist.Random
+            }
+            if(isRepeated)
+            {
+                 player.playlist.playbackMode = Playlist.CurrentItemInLoop
+            }
             player.playlist.previous()
+
         }
     }
     ButtonControl {
@@ -226,7 +233,16 @@ Item {
         icon_pressed: "qrc:/App/Media/Image/hold-next.png"
         icon_released: "qrc:/App/Media/Image/next.png"
         onClicked: {
+            if(isShuffle)
+            {
+                   player.playlist.playbackMode = Playlist.Random
+            }
+            if(isRepeated)
+            {
+                 player.playlist.playbackMode = Playlist.CurrentItemInLoop
+            }
             player.playlist.next()
+
         }
     }
     SwitchButton {
@@ -236,11 +252,11 @@ Item {
         anchors.right: totalTime.right
         icon_on: "qrc:/App/Media/Image/repeat1_hold.png"
         icon_off: "qrc:/App/Media/Image/repeat.png"
-        status: player.playlist.playbackMode === Playlist.Loop ? 1 : 0
+        status:  isRepeated
         onClicked: {
-            console.log(player.playlist.playbackMode)
+            isRepeated = !isRepeated
             if (player.playlist.playbackMode === Playlist.Loop) {
-                player.playlist.playbackMode = Playlist.Sequential
+                player.playlist.playbackMode = Playlist.CurrentItemInLoop
             } else {
                 player.playlist.playbackMode = Playlist.Loop
             }

@@ -16,7 +16,7 @@ Drawer {
         id: mediaPlaylist
         anchors.fill: parent
         model: myModel
-        clip: true
+       clip: true
         spacing: 2
         currentIndex: player.playlist.currentIndex
         delegate: MouseArea {
@@ -26,7 +26,7 @@ Drawer {
             Image {
                 id: playlistItem
                 width: 675 * appConfig.width_ratio
-                height: 193 * appConfig.height_ratio
+                height: 150 * appConfig.height_ratio
                 source: "qrc:/App/Media/Image/playlist.png"
                 opacity: 0.5
             }
@@ -62,7 +62,9 @@ Drawer {
             parent: mediaPlaylist.parent
             anchors.top: mediaPlaylist.top
             anchors.left: mediaPlaylist.right
-            anchors.bottom: mediaPlaylist.bottom
+           anchors.bottom: mediaPlaylist.bottom
+
+
         }
     }
 
